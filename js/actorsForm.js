@@ -1,4 +1,4 @@
-import { pubsub } from './pubsub.js';
+import { eventBus } from './eventBus.js';
 
 export const actorsForm = {
   render: (container) => {
@@ -14,6 +14,6 @@ export const actorsForm = {
     input.value = ''; //clear the form
 
     console.info(`AF: Added ${name}`);
-    pubsub.publish('actorAdded', name);
+    eventBus.publish('actorAdded', name);
   },
 };

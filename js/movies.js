@@ -1,4 +1,4 @@
-import { pubsub } from './pubsub.js';
+import { eventBus } from './eventBus.js';
 
 export const movies = {
   list: [],
@@ -8,7 +8,7 @@ export const movies = {
     container.appendChild(div);
     //let ul = document.querySelector('.movie-container ul');
 
-    pubsub.subscribe('movieAdded', movies.movieAdded);
+    eventBus.subscribe('movieAdded', movies.movieAdded);
   },
   movieAdded: (title) => {
     console.info(`M: I hear that ${title} was added`);
@@ -18,7 +18,7 @@ export const movies = {
     movies.list = Array.from(tempList).sort();
 
     console.info(`M: I updated the list`);
-    pubsub.publish('moviesUpdated', movies.list);
+    eventBus.publish('moviesUpdated', movies.list);
 
     //Update the ui
     let ul = document.querySelector('.movie-container ul');

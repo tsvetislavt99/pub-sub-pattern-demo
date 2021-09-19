@@ -1,4 +1,4 @@
-import { pubsub } from './pubsub.js';
+import { eventBus } from './eventBus.js';
 
 export const stats = {
   render: (container) => {
@@ -14,9 +14,9 @@ export const stats = {
     pa.innerHTML = `0 actors in the list`;
     d.appendChild(pa);
 
-    pubsub.subscribe('moviesUpdated', stats.moviesUpdated);
+    eventBus.subscribe('moviesUpdated', stats.moviesUpdated);
 
-    pubsub.subscribe('actorsUpdated', stats.actorsUpdated);
+    eventBus.subscribe('actorsUpdated', stats.actorsUpdated);
   },
   moviesUpdated: (list) => {
     console.info(

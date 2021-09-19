@@ -1,4 +1,4 @@
-import { pubsub } from './pubsub.js';
+import { eventBus } from './eventBus.js';
 
 export const moviesForm = {
   render: (container) => {
@@ -14,6 +14,6 @@ export const moviesForm = {
     input.value = ''; //clear the form
 
     console.info(`MF: Added ${title}`);
-    pubsub.publish('movieAdded', title);
+    eventBus.publish('movieAdded', title);
   },
 };

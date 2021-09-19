@@ -1,4 +1,4 @@
-import { pubsub } from './pubsub.js';
+import { eventBus } from './eventBus.js';
 
 export const actors = {
   list: [],
@@ -7,7 +7,7 @@ export const actors = {
     const div = template.content.cloneNode(true);
     container.appendChild(div);
 
-    pubsub.subscribe('actorAdded', actors.actorAdded);
+    eventBus.subscribe('actorAdded', actors.actorAdded);
   },
   actorAdded: (name) => {
     console.info(`A: I heard a new actor named ${name} was added`);
@@ -16,7 +16,7 @@ export const actors = {
     actors.list = Array.from(tempList).sort();
 
     console.info(`A: I updated the actors list :)`);
-    pubsub.publish('actorsUpdated', actors.list);
+    eventBus.publish('actorsUpdated', actors.list);
 
     let ul = document.querySelector('.actor-container ul');
     ul.innerHTML = '';
