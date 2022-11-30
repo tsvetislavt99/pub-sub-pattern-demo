@@ -6,7 +6,7 @@
  *
  * */
 
-export const pubsub = {
+export const eventBus = {
   events: {},
   subscribe: function (evName, fn) {
     console.info(`PS: Someone subscribed to ${evName}`);
